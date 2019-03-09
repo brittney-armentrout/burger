@@ -1,0 +1,32 @@
+body {
+    background: pink;
+    font-family: 'Sniglet', cursive;
+}
+
+#logo {
+    padding: 20px;
+}
+
+#submit-div {
+    max-width: 700px;
+    border: 8px solid white;
+    padding: 15px;
+}
+
+#menu-div {
+    max-width: 1200px;
+    border: 8px solid white;
+    padding: 15px;
+    margin-top: 20px; 
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 44px;
+    text-align: center;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+#orderup-div {
+    padding: 15px 50px 15px 15px;
+}

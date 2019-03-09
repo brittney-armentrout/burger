@@ -1,40 +1,67 @@
-<img src="./assets/img/heart-burger.jpg">
-
-<h1>Eat Da Burger</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+{{!-- logo div --}}
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <img src="./assets/img/burger_logo.png" id="logo">
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
+{{!-- new burger div --}}
+<div class="container d-flex justify-content-center" id="submit-div">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 id="submit-text">Create a Burger to Add to the Menu</h2>
+          <form action="/burgers" method="POST">
+              <input type="text" id="name" class="formactionpos" name="burger_name" placeholder="">
+              <button type="submit" class="addBurgerButton formactionpos">Add Burger</button>
+          </form>
+    </div>
   </div>
+</div>
 
-  <button type="submit">Add Cat</button>
-</form>
+{{!-- menu div --}}
+    <div class="container d-flex justify-content-center" id="menu-div">
+      <div class="row">
+        
+        <div class="col-md-12">
+        <h1>MENU</h1><hr>
+        </div>
+        
+        <div class="row">
+
+          {{!-- order up side --}}
+        <div class="col-md-6" id="orderup-div">
+          <h2>Order Up</h2>
+          {{#each burgers}}
+          
+            {{#unless this.devoured}}
+              <div>
+                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                  <button type="submit" class="burgerAvailable"> {{this.burger_name}}</button>
+                </form>
+              </div>
+            {{/unless}}
+      
+          {{/each}}
+        </div>
+
+          {{!-- clean plate side --}}
+        <div class="col-md-6" id="cleanplate-div">
+          <h2>Clean Plate Club</h2>
+          {{#each burgers}}
+            {{#if this.devoured}}
+              <div class="burgerEaten">
+                <div class="burgerE">
+                  {{this.burger_name}}
+                </div>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+        </div>
+        
+
+
+      </div>
+    </div>
+
+
