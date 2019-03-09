@@ -3,6 +3,7 @@ var connection = require("./connection.js")
 
 
 //Helper function for SQL syntax
+//Methods necessary to retrieve and store data in your database
 function printQuestionMarks(num) {
 	var arr = [];
 
