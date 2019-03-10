@@ -29,6 +29,8 @@ router.get("/", function(req, res) {
   //update the burger from not devoured to devoured 
   router.put("/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
+
+    console.log("Burger ID: ", condition);
   
     burger.updateOne({
       devoured: true

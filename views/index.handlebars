@@ -1,7 +1,7 @@
 {{!-- logo div --}}
 <div class="container d-flex justify-content-center">
   <div class="row">
-    <img src="./assets/img/burger_logo.png" id="logo">
+    <img class="img-fluid" src="./assets/img/burger_logo_sm.png" id="logo">
   </div>
 </div>
 
@@ -11,8 +11,8 @@
     <div class="col-md-12">
       <h2 id="submit-text">Create a Burger to Add to the Menu</h2>
           <form action="/burgers" method="POST">
-              <input type="text" id="name" class="formactionpos" name="burger_name" placeholder="">
-              <button type="submit" class="addBurgerButton formactionpos">Add Burger</button>
+              <input type="text" id="name" name="burger_name" placeholder="">
+              <button type="submit" class="btn btn-outline-dark">Add Burger</button>
           </form>
     </div>
   </div>
@@ -23,7 +23,8 @@
       <div class="row">
         
         <div class="col-md-12">
-        <h1>MENU</h1><hr>
+          <h1>MENU</h1>
+          <h6>Click on any burger to DEVOUR!</h6><hr>
         </div>
         
         <div class="row">
@@ -35,8 +36,8 @@
           
             {{#unless this.devoured}}
               <div>
-                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                  <button type="submit" class="burgerAvailable"> {{this.burger_name}}</button>
+                <form action="/burgers/{{this.id}}" method="POST" id="burger-button">
+                  <button type="submit" class="btn btn-outline-dark"> {{this.burger_name}}</button>
                 </form>
               </div>
             {{/unless}}
@@ -49,8 +50,8 @@
           <h2>Clean Plate Club</h2>
           {{#each burgers}}
             {{#if this.devoured}}
-              <div class="burgerEaten">
-                <div class="burgerE">
+              <div>
+                <div>
                   {{this.burger_name}}
                 </div>
               </div>
